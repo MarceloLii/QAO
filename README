@@ -1,0 +1,40 @@
+# Calculadora QAO - Tempo de Serviço e Aposentadoria
+
+## Descrição
+
+A **Calculadora QAO** é uma aplicação web desenvolvida para o **Quadro Auxiliar de Oficiais (QAO)** do Exército Brasileiro. O QAO é um grupo de militares que alcançam o oficialato após uma carreira como sargentos e subtenentes. Criado em 1979 por meio do Decreto Presidencial nº 84.333, o QAO permite aos militares ascender ao posto de 2º Tenente por merecimento e finalizar a carreira como Capitão.
+
+Esta aplicação ajuda os militares do QAO a calcular e visualizar sua trajetória de promoções e o tempo restante até a próxima promoção com base na data em que foram promovidos a 2º Tenente.
+
+### Funções dos Militares do QAO
+
+Os militares do QAO desempenham funções cruciais em diversas áreas, tais como:
+
+- Comandante de Contingente
+- Auxiliar de Estado-Maior Pessoal
+- Adjunto de Suporte Documental
+- Chefe de Gabinete de Identificação Regional
+- Delegado de Serviço Militar
+- Mestre de Banda de Música
+- Auxiliar Administrativo em Hospitais, Policlínicas e Postos Médicos
+- Chefe de Seções de Manutenção
+- Membro de Equipes de Topografia
+
+## Tecnologias Utilizadas
+
+- **HTML**: Estrutura da página.
+- **CSS**: Estilização e layout da página.
+- **JavaScript**: Lógica de cálculo e manipulação do DOM.
+
+## Instalação
+
+Para configurar o projeto localmente, siga estas etapas:
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone https://github.com/MarceloLii/QAO.git
+
+2. **Veja funcionando:**
+
+https://marcelolii.github.io/QAO/

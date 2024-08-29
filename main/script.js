@@ -49,21 +49,34 @@ function calcular() {
     const data2Tenente = new Date(data2TenenteInput);
     const agora = new Date();
 
+    if (isNaN(data2Tenente.getTime())) {
+        resultadosDiv.innerHTML = 'Data inválida. Por favor, selecione uma data válida.';
+        return;
+    }
+
+    // Calcula as datas de promoção
     const data1Tenente = adicionarMeses(data2Tenente, 24);
     const dataCapitao = adicionarMeses(data2Tenente, 60);
 
+    // Gera a linha do tempo
+    let timeline = '';
+
+    // Adiciona a promoção a 1º Tenente, se aplicável
+    if (agora >= data1Tenente) {
+        timeline += criarLinhaTempo(data1Tenente, 'Promoção a 1º Tenente');
+    } else {
+        timeline += criarLinhaTempo(data1Tenente, 'Promoção a 1º Tenente');
+    }
+
+    // Adiciona a promoção a Capitão
     if (agora >= dataCapitao) {
-        resultadosDiv.innerHTML = `Você foi promovido a Capitão em ${formatarData(dataCapitao)}.`;
+        timeline += criarLinhaTempo(dataCapitao, 'Promoção a Capitão');
     } else {
         const tempoRestanteCapitao = calcularTempoRestante(dataCapitao, agora);
-
-        let timeline = '';
-        if (agora >= data1Tenente) {
-            timeline += criarLinhaTempo(data1Tenente, 'Promoção a 1º Tenente');
-        }
         timeline += criarLinhaTempo(dataCapitao, 'Promoção a Capitão', tempoRestanteCapitao);
-        resultadosDiv.innerHTML = `<ul class="timeline">${timeline}</ul>`;
     }
+
+    resultadosDiv.innerHTML = `<ul class="timeline">${timeline}</ul>`;
 }
 
 /**
@@ -86,6 +99,9 @@ function adicionarMeses(data, meses) {
  */
 function calcularTempoRestante(futuro, presente) {
     const diffMs = futuro - presente;
+    if (diffMs <= 0) {
+        return { dias: 0, horas: 0, minutos: 0 };
+    }
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
     const diffHrs = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
