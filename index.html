@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculadora para o Quadro Auxiliar de Oficiais (QAO) do Exército Brasileiro. Calcule as datas de promoção e o tempo restante até a próxima promoção com base na data em que você se tornou 2º Tenente.">
-    <meta name="keywords" content="QAO, Quadro Auxiliar de Oficiais, Exército Brasileiro, calculadora, promoções, datas de promoção">
+    <meta name="description"
+        content="Calculadora para o Quadro Auxiliar de Oficiais (QAO) do Exército Brasileiro. Calcule as datas de promoção e o tempo restante até a próxima promoção com base na data em que você se tornou 2º Tenente.">
+    <meta name="keywords"
+        content="QAO, Quadro Auxiliar de Oficiais, Exército Brasileiro, calculadora, promoções, datas de promoção">
     <meta name="author" content="Marcelo Lii">
     <title>Calculadora QAO - Quadro Auxiliar de Oficiais</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" href="style/favicon.ico" type="image/x-icon">
     <meta property="og:title" content="Calculadora QAO - Quadro Auxiliar de Oficiais">
-    <meta property="og:description" content="Calcule as datas de promoção e o tempo restante até a próxima promoção com base na data em que você se tornou 2º Tenente no Quadro Auxiliar de Oficiais do Exército Brasileiro.">
+    <meta property="og:description"
+        content="Calcule as datas de promoção e o tempo restante até a próxima promoção com base na data em que você se tornou 2º Tenente no Quadro Auxiliar de Oficiais do Exército Brasileiro.">
     <meta property="og:url" content="https://marcelolii.github.io/QAO/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Calculadora QAO - Quadro Auxiliar de Oficiais">
-    <meta name="twitter:description" content="Calcule as datas de promoção e o tempo restante até a próxima promoção com base na data em que você se tornou 2º Tenente no Quadro Auxiliar de Oficiais do Exército Brasileiro.">
+    <meta name="twitter:description"
+        content="Calcule as datas de promoção e o tempo restante até a próxima promoção com base na data em que você se tornou 2º Tenente no Quadro Auxiliar de Oficiais do Exército Brasileiro.">
 </head>
 
 <body>
@@ -27,7 +31,8 @@
         <main>
             <section>
                 <h2>Calcule sua promoção</h2>
-                <p>Selecione a data em que você se tornou 2º Tenente para calcular suas próximas datas de promoção e o tempo restante até a próxima promoção.</p>
+                <p>Selecione a data em que você se tornou 2º Tenente para calcular suas próximas datas de promoção e o
+                    tempo restante até a próxima promoção.</p>
                 <label for="data-2tenente">Data em que saiu 2º Tenente:</label>
                 <select id="data-2tenente" aria-label="Data de promoção para 2º Tenente">
                     <!-- Opções de data geradas por JavaScript -->
@@ -37,10 +42,15 @@
             </section>
         </main>
         <footer>
-            <p>&copy; 2024 Marcelo Lii. Todos os direitos reservados.</p>
+            <p>&copy; <span id="anoAtual"></span> Marcelo Lima. Todos os direitos reservados.</p>
+
+            <script>
+                const anoAtual = new Date().getFullYear();
+                document.getElementById("anoAtual").textContent = `2024 ~ ${anoAtual}`;
+            </script>
         </footer>
     </div>
-    <script src="main/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

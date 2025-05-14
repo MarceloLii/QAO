@@ -1,151 +1,565 @@
-/* Estilo geral do corpo */
-body {
-    color: #fff;
-    background-color: #566837; /* Verde oliva do Exército Brasileiro */
-    font-family: 'Arial', 'Helvetica', sans-serif;
+:root {
+    /* Cores oficiais do Exército Brasileiro */
+    --verde-oliva: #4A5D23;
+    --verde-oliva-escuro: #364219;
+    --verde-oliva-claro: #5C732D;
+    --verde-camuflado-1: #6B7F4E;
+    --verde-camuflado-2: #7D8C5E;
+    --verde-camuflado-3: #8F9D6F;
+    --dourado-militar: #C9A227;
+    --dourado-escuro: #A3861E;
+    --branco: #F5F5F5;
+    --preto-militar: #1A1A1A;
+    --sombra-militar: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --borda-radius: 6px;
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Padrão de camuflagem */
+    --camuflagem: repeating-linear-gradient(
+        45deg,
+        var(--verde-oliva),
+        var(--verde-oliva) 10px,
+        var(--verde-oliva-escuro) 10px,
+        var(--verde-oliva-escuro) 20px,
+        var(--verde-camuflado-1) 20px,
+        var(--verde-camuflado-1) 30px
+    );
+}
+
+/* Reset Militar */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-/* Container principal */
+body {
+    color: var(--branco);
+    background: var(--camuflagem);
+    font-family: 'Titillium Web', 'Arial Narrow', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.5px;
+}
+
+/* Container - Estilo de Placa Militar */
 #container {
-    display: block;
-    width: 80%;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #2c3e50; /* Escuro para contraste com o fundo */
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 92%;
+    max-width: 1100px;
+    margin: 1.5rem auto;
+    padding: 2rem;
+    background-color: rgba(26, 26, 26, 0.9);
+    border-radius: var(--borda-radius);
+    border: 2px solid var(--dourado-militar);
+    box-shadow: var(--sombra-militar);
+    backdrop-filter: blur(2px);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Estilo para cabeçalho */
+#container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(74, 93, 35, 0.1) 0%,
+        rgba(26, 26, 26, 0.95) 100%
+    );
+    z-index: -1;
+}
+
+/* Cabeçalho - Estilo de Distintivo */
 header {
-    display: block;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        var(--dourado-militar), 
+        transparent
+    );
 }
 
 header img {
-    max-width: 100%;
+    max-width: 300px;
     height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
 }
 
-/* Formulário e elementos de entrada */
-form {
-    display: block;
-    margin: 0;
+header img:hover {
+    transform: scale(1.05);
 }
 
+h1 {
+    color: var(--dourado-militar);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: var(--dourado-militar);
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--verde-camuflado-2);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--branco);
+}
+
+/* Seção - Estilo de Documento Militar */
+section {
+    background: rgba(54, 66, 25, 0.7);
+    padding: 2rem;
+    border-radius: var(--borda-radius);
+    margin-bottom: 2rem;
+    border: 1px solid var(--verde-camuflado-3);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px dashed rgba(201, 162, 39, 0.3);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* Formulário - Estilo Militar */
 label {
     display: block;
-    font-weight: bold;
-    color: #ffffff;
+    font-weight: 600;
+    color: var(--dourado-militar);
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 1.2rem;
     font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 #data-2tenente {
     display: block;
     width: 100%;
-    max-width: 300px;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin: 10px auto;
-    background-color: #ecf0f1; /* Cor de fundo claro para contraste com o texto */
-    color: #2c3e50; /* Cor de texto escura para melhor legibilidade */
+    max-width: 320px;
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--borda-radius);
+    border: 2px solid var(--verde-camuflado-2);
+    margin: 1.2rem auto;
+    background-color: rgba(245, 245, 245, 0.9);
+    color: var(--preto-militar);
     font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transicao);
+    box-shadow: var(--sombra-militar);
+    text-align: center;
 }
 
+#data-2tenente:focus {
+    outline: none;
+    border-color: var(--dourado-militar);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.5);
+    background-color: var(--branco);
+}
+
+/* Botão - Estilo de Botão de Uniforme */
 button {
     display: block;
-    margin: 20px auto;
-    padding: 12px 20px;
-    background-color: #4CAF50; /* Verde padrão */
-    color: white;
+    margin: 2rem auto;
+    padding: 0.9rem 2.2rem;
+    background: linear-gradient(
+        to bottom,
+        var(--dourado-militar),
+        var(--dourado-escuro)
+    );
+    color: var(--preto-militar);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--borda-radius);
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    font-weight: 700;
+    transition: var(--transicao);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--sombra-militar);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+    );
+    transform: rotate(30deg);
+    transition: var(--transicao);
 }
 
 button:hover {
-    background-color: #45a049; /* Verde um pouco mais escuro ao passar o mouse */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo da linha do tempo */
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Resultados - Estilo de Relatório Militar */
+#resultados {
+    margin-top: 2rem;
+    background: rgba(26, 26, 26, 0.7);
+    border-radius: var(--borda-radius);
+    padding: 1.5rem;
+    border: 1px solid var(--verde-camuflado-1);
+}
+
+.error-message {
+    color: #FF6B6B;
+    background-color: rgba(26, 26, 26, 0.8);
+    padding: 1.2rem;
+    border-radius: var(--borda-radius);
+    border-left: 4px solid #FF6B6B;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: var(--sombra-militar);
+}
+
+.resultado-final {
+    background: linear-gradient(
+        to right,
+        rgba(74, 93, 35, 0.3),
+        rgba(26, 26, 26, 0.7)
+    );
+    padding: 1.8rem;
+    border-radius: var(--borda-radius);
+    border-left: 4px solid var(--dourado-militar);
+    margin: 1.5rem 0;
+    text-align: center;
+    box-shadow: var(--sombra-militar);
+}
+
+.resultado-final h3 {
+    color: var(--dourado-militar);
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+/* Timeline - Estilo de Linha do Tempo Militar */
 .timeline {
     list-style: none;
     position: relative;
     padding: 0;
+    margin: 2.5rem 0;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 11px;
-    width: 2px;
+    left: 25px;
+    width: 4px;
     height: 100%;
-    background-color: #bdc3c7; /* Cinza claro para a linha de tempo */
+    background: linear-gradient(
+        to bottom,
+        var(--dourado-militar),
+        var(--verde-oliva),
+        transparent
+    );
+    box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
 }
 
 .timeline li {
     position: relative;
-    padding-left: 40px;
-    margin-bottom: 30px;
+    padding-left: 70px;
+    margin-bottom: 3rem;
 }
 
 .timeline li::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    background-color: #4CAF50; /* Verde padrão para os marcadores de evento */
-    border: 2px solid #337e36; /* Verde escuro para contorno */
+    top: 8px;
+    left: 12px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--dourado-militar);
+    border: 3px solid var(--verde-oliva-escuro);
     border-radius: 50%;
-    transform: translateY(-50%);
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(201, 162, 39, 0.7);
 }
 
-.timeline .timeline-content {
-    background-color: #34495e; /* Azul escuro para contraste com o verde */
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+.timeline-content {
+    background: rgba(42, 52, 19, 0.8);
+    padding: 1.8rem;
+    border-radius: var(--borda-radius);
+    box-shadow: var(--sombra-militar);
+    position: relative;
+    transition: var(--transicao);
+    border: 1px solid var(--verde-camuflado-2);
 }
 
-.timeline .timeline-date {
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid rgba(42, 52, 19, 0.8);
+    filter: drop-shadow(-2px 0 2px rgba(0, 0, 0, 0.3));
+}
+
+.timeline-content:hover {
+    transform: translateX(8px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    background: rgba(49, 61, 22, 0.9);
+}
+
+.timeline .date {
     display: block;
-    font-size: 0.9rem;
-    color: #95a5a6; /* Cinza claro para datas */
-    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: var(--dourado-militar);
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.timeline .timeline-event {
-    font-size: 1rem;
-    color: #ecf0f1; /* Branco para o texto dos eventos */
+.timeline .event {
+    font-size: 1.2rem;
+    color: var(--branco);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .timeline p {
-    font-size: 0.9rem;
-    color: #ecf0f1; /* Branco para texto adicional */
+    font-size: 1rem;
+    color: var(--branco);
+    margin: 0;
+    text-align: left;
+    line-height: 1.5;
 }
 
-/* Responsividade */
+.timeline p strong {
+    color: var(--dourado-militar);
+    font-weight: 600;
+}
+
+/* Rodapé - Estilo de Placa de Identificação */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(
+        to right,
+        var(--verde-oliva-escuro),
+        var(--verde-oliva),
+        var(--verde-oliva-escuro)
+    );
+    color: var(--branco);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-top: 2px solid var(--dourado-militar);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+/* Animações Militares */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(201, 162, 39, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+}
+
+.timeline li {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+.timeline li:nth-child(1) { animation-delay: 0.1s; }
+.timeline li:nth-child(2) { animation-delay: 0.3s; }
+
+.timeline li::before {
+    animation: pulse 2s infinite;
+}
+
+/* Responsividade - Adaptação para Campo */
 @media screen and (max-width: 768px) {
     #container {
-        width: 95%;
+        width: 96%;
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    .timeline li {
+        padding-left: 60px;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline li::before {
+        left: 8px;
+        width: 20px;
+        height: 20px;
+    }
+    
+    button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
     }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1000px) {
+@media screen and (max-width: 480px) {
     #container {
-        width: 90%;
+        padding: 1rem;
+    }
+    
+    header img {
+        max-width: 140px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .timeline li {
+        padding-left: 50px;
+        margin-bottom: 2rem;
+    }
+    
+    .timeline-content {
+        padding: 1.2rem;
+    }
+    
+    .timeline-content::before {
+        display: none;
+    }
+}
+
+/* Acessibilidade Militar */
+a:focus, button:focus, input:focus {
+    outline: 3px solid var(--dourado-militar);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px rgba(201, 162, 39, 0.3);
+}
+
+/* Modo de Impressão - Relatório Oficial */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    #container {
+        background: white !important;
+        box-shadow: none !important;
+        border: 2px solid black !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 1rem !important;
+    }
+    
+    header::after, 
+    .timeline::before,
+    .timeline li::before,
+    .timeline-content::before {
+        display: none !important;
+    }
+    
+    button {
+        display: none !important;
+    }
+    
+    .timeline li {
+        padding-left: 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    .timeline-content {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: 1px solid black !important;
+    }
+    
+    footer {
+        background: white !important;
+        color: black !important;
+        border-top: 2px solid black !important;
     }
 }
